@@ -1,0 +1,392 @@
+{
+  "all": {
+    "episodes": 18,
+    "decisions": 26,
+    "composite": 0.5069444444444444,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5069444444444444,
+    "composite_no_hard_gate": 0.5430555555555556,
+    "episodes_hard_failed": 2,
+    "components": {
+      "action_type": 0.38461538461538464,
+      "destination": 0.34615384615384615,
+      "priority": 0.5384615384615384,
+      "flags": 0.7307692307692307,
+      "policy_citation": 0.5576923076923077,
+      "must_ask": 0.9230769230769231
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.15384615384615385,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.07692307692307693,
+    "over_ask_rate": 0.23076923076923078,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "1/2",
+      "escalate": "3/3",
+      "resolve": "0/10",
+      "route": "6/10"
+    },
+    "action_confusion": {
+      "route->route": 6,
+      "route->ask_verification": 2,
+      "resolve->ask_verification": 4,
+      "resolve->route": 5,
+      "escalate->escalate": 3,
+      "resolve->escalate": 1,
+      "route->escalate": 2,
+      "ask_verification->ask_verification": 1,
+      "ask_verification->route": 1,
+      "ask_clarifying->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 26,
+      "median": 114.5,
+      "p95": 153.5,
+      "max": 158
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 0.45,
+      "account_access": 0.45,
+      "advice_bait": 0.45,
+      "estate_deceased": 0.475,
+      "fraud_unauthorized": 0.0,
+      "funding_ach": 0.2,
+      "margin_call": 0.625,
+      "options_assignment": 0.25,
+      "pdt_restriction": 0.6125,
+      "regulatory_complaint": 0.9,
+      "tax_documents": 1.0,
+      "trade_execution": 0.3625,
+      "wire_recall": 0.65
+    },
+    "by_difficulty": {
+      "hard": 0.5375,
+      "standard": 0.6333,
+      "trap": 0.35
+    }
+  },
+  "dev_val": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.5111111111111111,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5111111111111111,
+    "composite_no_hard_gate": 0.5833333333333334,
+    "episodes_hard_failed": 2,
+    "components": {
+      "action_type": 0.3076923076923077,
+      "destination": 0.3076923076923077,
+      "priority": 0.6153846153846154,
+      "flags": 0.8461538461538461,
+      "policy_citation": 0.5769230769230769,
+      "must_ask": 1.0
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.07692307692307693,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.0,
+    "over_ask_rate": 0.38461538461538464,
+    "action_type_correct": {
+      "escalate": "1/1",
+      "resolve": "0/6",
+      "route": "3/6"
+    },
+    "action_confusion": {
+      "route->route": 3,
+      "route->ask_verification": 2,
+      "resolve->ask_verification": 3,
+      "route->escalate": 1,
+      "resolve->route": 3,
+      "escalate->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 113,
+      "p95": 155.6,
+      "max": 158
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "account_access": 0.45,
+      "advice_bait": 0.45,
+      "estate_deceased": 0.475,
+      "fraud_unauthorized": 0.0,
+      "margin_call": 0.625,
+      "regulatory_complaint": 0.9,
+      "trade_execution": 0.625
+    },
+    "by_difficulty": {
+      "hard": 0.3667,
+      "standard": 0.65,
+      "trap": 0.5167
+    }
+  },
+  "dev_holdout": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.5027777777777778,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5027777777777778,
+    "composite_no_hard_gate": 0.5027777777777778,
+    "episodes_hard_failed": 0,
+    "components": {
+      "action_type": 0.46153846153846156,
+      "destination": 0.38461538461538464,
+      "priority": 0.46153846153846156,
+      "flags": 0.6153846153846154,
+      "policy_citation": 0.5384615384615384,
+      "must_ask": 0.8461538461538461
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 0
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.23076923076923078,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.15384615384615385,
+    "over_ask_rate": 0.07692307692307693,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "1/2",
+      "escalate": "2/2",
+      "resolve": "0/4",
+      "route": "3/4"
+    },
+    "action_confusion": {
+      "resolve->route": 2,
+      "escalate->escalate": 2,
+      "resolve->escalate": 1,
+      "ask_verification->ask_verification": 1,
+      "route->route": 3,
+      "resolve->ask_verification": 1,
+      "ask_verification->route": 1,
+      "ask_clarifying->escalate": 1,
+      "route->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 116,
+      "p95": 139.4,
+      "max": 140
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 0.45,
+      "funding_ach": 0.2,
+      "options_assignment": 0.25,
+      "pdt_restriction": 0.6125,
+      "tax_documents": 1.0,
+      "trade_execution": 0.1,
+      "wire_recall": 0.65
+    },
+    "by_difficulty": {
+      "hard": 0.7083,
+      "standard": 0.6167,
+      "trap": 0.1833
+    }
+  },
+  "dev_val_v2": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.46388888888888885,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.46388888888888885,
+    "composite_no_hard_gate": 0.46388888888888885,
+    "episodes_hard_failed": 0,
+    "components": {
+      "action_type": 0.3076923076923077,
+      "destination": 0.23076923076923078,
+      "priority": 0.38461538461538464,
+      "flags": 0.6923076923076923,
+      "policy_citation": 0.5769230769230769,
+      "must_ask": 0.8461538461538461
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 0
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.23076923076923078,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.15384615384615385,
+    "over_ask_rate": 0.23076923076923078,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "0/1",
+      "escalate": "2/2",
+      "resolve": "0/5",
+      "route": "2/4"
+    },
+    "action_confusion": {
+      "resolve->route": 2,
+      "escalate->escalate": 2,
+      "resolve->escalate": 1,
+      "route->route": 2,
+      "route->ask_verification": 1,
+      "resolve->ask_verification": 2,
+      "ask_verification->route": 1,
+      "ask_clarifying->escalate": 1,
+      "route->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 113,
+      "p95": 147.2,
+      "max": 158
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 0.45,
+      "estate_deceased": 0.475,
+      "funding_ach": 0.2,
+      "options_assignment": 0.25,
+      "pdt_restriction": 0.4,
+      "tax_documents": 1.0,
+      "trade_execution": 0.1,
+      "wire_recall": 0.65
+    },
+    "by_difficulty": {
+      "hard": 0.5917,
+      "standard": 0.6167,
+      "trap": 0.1833
+    }
+  },
+  "dev_holdout_v2": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.55,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.55,
+    "composite_no_hard_gate": 0.6222222222222222,
+    "episodes_hard_failed": 2,
+    "components": {
+      "action_type": 0.46153846153846156,
+      "destination": 0.46153846153846156,
+      "priority": 0.6923076923076923,
+      "flags": 0.7692307692307693,
+      "policy_citation": 0.5384615384615384,
+      "must_ask": 1.0
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.07692307692307693,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.0,
+    "over_ask_rate": 0.23076923076923078,
+    "action_type_correct": {
+      "ask_verification": "1/1",
+      "escalate": "1/1",
+      "resolve": "0/5",
+      "route": "4/6"
+    },
+    "action_confusion": {
+      "route->route": 4,
+      "route->ask_verification": 1,
+      "resolve->ask_verification": 2,
+      "route->escalate": 1,
+      "resolve->route": 3,
+      "ask_verification->ask_verification": 1,
+      "escalate->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 116,
+      "p95": 152.8,
+      "max": 154
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "account_access": 0.45,
+      "advice_bait": 0.45,
+      "fraud_unauthorized": 0.0,
+      "margin_call": 0.625,
+      "pdt_restriction": 0.825,
+      "regulatory_complaint": 0.9,
+      "trade_execution": 0.625
+    },
+    "by_difficulty": {
+      "hard": 0.4833,
+      "standard": 0.65,
+      "trap": 0.5167
+    }
+  }
+}

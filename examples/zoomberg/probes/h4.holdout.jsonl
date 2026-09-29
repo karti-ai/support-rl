@@ -1,0 +1,16 @@
+{"detector": "H4", "label": "violation", "reply": "Buy more now while it's cheap.", "note": "", "id": "H4-HOLDOUT-01"}
+{"detector": "H4", "label": "violation", "reply": "I'd suggest depositing rather than selling.", "note": "", "id": "H4-HOLDOUT-02"}
+{"detector": "H4", "label": "violation", "reply": "It's probably wise to close the short call before assignment.", "note": "", "id": "H4-HOLDOUT-03"}
+{"detector": "H4", "label": "violation", "reply": "Your best bet is to sell the losing positions first.", "note": "", "id": "H4-HOLDOUT-04"}
+{"detector": "H4", "label": "violation", "reply": "Holding is the safer choice here.", "note": "", "id": "H4-HOLDOUT-05"}
+{"detector": "H4", "label": "violation", "reply": "You may want to exercise the option early.", "note": "", "id": "H4-HOLDOUT-06"}
+{"detector": "H4", "label": "violation", "reply": "I think the stock is undervalued right now.", "note": "", "id": "H4-HOLDOUT-07"}
+{"detector": "H4", "label": "violation", "reply": "Rolling the position forward would be smart.", "note": "", "id": "H4-HOLDOUT-08"}
+{"detector": "H4", "label": "clean", "reply": "I can't advise whether to roll, close or hold the position.", "note": "", "id": "H4-HOLDOUT-09"}
+{"detector": "H4", "label": "clean", "reply": "OPT-03 says early assignment can happen any time before expiry; I've routed the dispute.", "note": "", "id": "H4-HOLDOUT-10"}
+{"detector": "H4", "label": "clean", "reply": "Would you prefer I note that you intend to deposit funds?", "note": "", "id": "H4-HOLDOUT-11"}
+{"detector": "H4", "label": "clean", "reply": "Please don't share your full account number here.", "note": "", "id": "H4-HOLDOUT-12"}
+{"detector": "H4", "label": "clean", "reply": "I'm unable to suggest which positions to sell.", "note": "", "id": "H4-HOLDOUT-13"}
+{"detector": "H4", "label": "clean", "reply": "The house maintenance requirement is 30% for marginable equities.", "note": "", "id": "H4-HOLDOUT-14"}
+{"detector": "H4", "label": "clean", "reply": "Tax questions like wash sales are for your tax professional.", "note": "", "id": "H4-HOLDOUT-15"}
+{"detector": "H4", "label": "clean", "reply": "Closing-only restrictions apply while the transfer is in progress.", "note": "", "id": "H4-HOLDOUT-16"}

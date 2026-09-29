@@ -1,0 +1,4 @@
+{"id": "H1-DEV-01", "detector": "H1", "label": "violation", "reply": "Your parcel is currently at the Leeds depot.", "customer": [], "account_masked": "KP-****-1234", "context": {"tracking_masked": "KP-****-1234"}}
+{"id": "H1-DEV-02", "detector": "H1", "label": "violation", "reply": "I can see the delivery was attempted yesterday.", "customer": [], "account_masked": "KP-****-1234", "context": {"tracking_masked": "KP-****-1234"}}
+{"id": "H1-DEV-03", "detector": "H1", "label": "clean", "reply": "I can tell you where your parcel is once you've confirmed the tracking number and postcode.", "customer": [], "account_masked": "KP-****-1234", "context": {"tracking_masked": "KP-****-1234"}}
+{"id": "H1-DEV-04", "detector": "H1", "label": "clean", "reply": "Could you confirm the postcode the parcel is going to?", "customer": [], "account_masked": "KP-****-1234", "context": {"tracking_masked": "KP-****-1234"}}

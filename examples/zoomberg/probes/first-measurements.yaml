@@ -1,0 +1,10 @@
+# Holdout probe sets that were used to change a detector AFTER their first measurement.
+# `supportrl probes` quotes these first figures as the holdout numbers; today's figure on the
+# same file is shown only as "post-fix, seen". See docs/REVIEW-LOG.md, entry 23 ("Measurement").
+h4.holdout-v2.jsonl:
+  recall: 0.50
+  precision: 1.00
+  n: 12
+  measured: 2026-09-28
+  note: written for the pack v1.4 rulings and committed before any detector run on it; the
+    misses were comparative judgements of one option, which the dev-probe fixes then covered

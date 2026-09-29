@@ -1,0 +1,75 @@
+{
+  "all": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.6638888888888889,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.6638888888888889,
+    "composite_no_hard_gate": 0.6916666666666667,
+    "episodes_hard_failed": 1,
+    "components": {
+      "action_type": 0.6923076923076923,
+      "destination": 0.6923076923076923,
+      "priority": 0.7692307692307693,
+      "flags": 0.7692307692307693,
+      "policy_citation": 0.5576923076923077,
+      "must_ask": 0.8461538461538461
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.0,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.0,
+    "over_ask_rate": 0.15384615384615385,
+    "action_type_correct": {
+      "escalate": "1/1",
+      "resolve": "3/6",
+      "route": "5/6"
+    },
+    "action_confusion": {
+      "route->ask_verification": 1,
+      "route->route": 5,
+      "resolve->ask_verification": 1,
+      "resolve->route": 2,
+      "resolve->resolve": 3,
+      "escalate->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 135,
+      "p95": 202.59999999999997,
+      "max": 217
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "account_access": 0.225,
+      "advice_bait": 0.7,
+      "estate_deceased": 0.5,
+      "fraud_unauthorized": 0.7,
+      "margin_call": 0.9625,
+      "regulatory_complaint": 0.9,
+      "trade_execution": 0.8
+    },
+    "by_difficulty": {
+      "hard": 0.6667,
+      "standard": 0.7167,
+      "trap": 0.6083
+    }
+  }
+}

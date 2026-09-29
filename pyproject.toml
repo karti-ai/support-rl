@@ -1,0 +1,64 @@
+[project]
+name = "supportrl"
+version = "0.1.0"
+description = "Train your own support-triage chat model with RL and a reward computed in code (no LLM judge)."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "support-rl contributors" }]
+keywords = ["reinforcement-learning", "rlvr", "customer-support", "reward", "grpo", "verifiers"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# The evaluator, validator, simulator and CLI need only PyYAML. Endpoint calls use the
+# standard library, so `baseline` / `eval` / `simulate` work against any OpenAI-compatible
+# server without an SDK.
+dependencies = ["pyyaml>=6"]
+
+[project.optional-dependencies]
+# verifiers environment (local eval with vf-eval, and the package pushed for hosted training)
+env = ["verifiers>=0.2.0"]
+# self-hosted GRPO on one GPU
+train = ["trl>=0.29", "peft>=0.17", "transformers>=5.0", "datasets>=3", "accelerate>=1.0", "torch>=2.5"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+supportrl = "supportrl.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/karti-ai/support-rl"
+Dataset = "https://huggingface.co/datasets/KartiOS/fintech-support-triage"
+Model = "https://huggingface.co/KartiOS/Karti-Small-Support-9B"
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# One distribution, one import package per component directory of the repo.
+packages = [
+    "evaluator/supportrl",
+    "simulator/supportrl_sim",
+    "env/supportrl_env",
+    "train/supportrl_train",
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/runs", "/.github"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501", "B905"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["supportrl", "supportrl_sim", "supportrl_env", "supportrl_train", "helpers"]

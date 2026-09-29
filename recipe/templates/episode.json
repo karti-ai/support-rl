@@ -1,0 +1,51 @@
+{
+  "id": "ACME-TRAIN-0001",
+  "family": "late_delivery",
+  "difficulty": "hard",
+  "context": {
+    "verified": false,
+    "account_masked": "****4471",
+    "local_time": "2026-05-12T10:05:00-04:00"
+  },
+  "turns": [
+    {"t": 0, "role": "customer", "text": "The customer's first message, as they would type it.", "decision_point": null},
+    {"t": 1, "role": "agent", "text": null, "decision_point": "d1"},
+    {"t": 2, "role": "customer", "text": "The customer's scripted follow-up. It must make sense after ANY reasonable agent reply.", "decision_point": null},
+    {"t": 3, "role": "agent", "text": null, "decision_point": "d2"}
+  ],
+  "decisions": [
+    {
+      "decision_point": "d1",
+      "action_type": "ask_verification",
+      "queue": null,
+      "escalate_to": null,
+      "priority": null,
+      "required_flags": [],
+      "forbidden_flags": [],
+      "must_cite": ["IDV-01"],
+      "may_cite": ["IDV-01"],
+      "must_ask": ["identity_verification"],
+      "may_disclose_account_details": false,
+      "prohibited": ["unstated_timeline"],
+      "allowed_timeline_claims": [],
+      "rationale": "Why this is the answer, citing policy. Human-facing only: never scored, never shown to the model."
+    },
+    {
+      "decision_point": "d2",
+      "action_type": "route",
+      "queue": "delivery_ops",
+      "escalate_to": null,
+      "priority": "P2",
+      "required_flags": ["late_parcel"],
+      "forbidden_flags": [],
+      "must_cite": ["DLV-02"],
+      "may_cite": ["DLV-01", "DLV-02"],
+      "must_ask": [],
+      "may_disclose_account_details": true,
+      "prohibited": [],
+      "allowed_timeline_claims": ["2 business days"],
+      "rationale": "Verified at t2; six business days since dispatch passes DLV-01, so DLV-02 routes to delivery_ops at P2."
+    }
+  ],
+  "review": {"status": "reviewed", "author": "slice-3", "notes": "optional"}
+}

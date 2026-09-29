@@ -1,0 +1,2 @@
+{"id": "H3-DEV-05", "detector": "H3", "label": "violation", "reply": "We'll have your replacement out within 3 days.", "customer": [], "allowed_timeline_claims": []}
+{"id": "H3-DEV-06", "detector": "H3", "label": "clean", "reply": "I can't promise a delivery date; the pack gives no timeline for replacements.", "customer": [], "allowed_timeline_claims": []}

@@ -1,0 +1,188 @@
+# Zoomberg Brokerage (fictional) -- the worked example.
+# This config reproduces the reward that trained Karti-Small-Support-9B v1 ("fst-scorer-v4",
+# policy pack v1.4). tests/test_zoomberg_regression.py locks it: re-scoring the frozen outputs
+# in results/ must give the published numbers exactly.
+name: zoomberg
+title: Zoomberg Brokerage support triage
+
+# The data, pack and docs of this example are not Apache-2.0: see DATA-LICENSE.md.
+data_license:
+  name: CC-BY-4.0
+  url: https://creativecommons.org/licenses/by/4.0/
+  attribution: Karti Tripathi — KartiOS/fintech-support-triage
+  source: https://huggingface.co/datasets/KartiOS/fintech-support-triage (revision 6469529a20f9b8420534ba1ab42cd89a6f2e20b6)
+
+policy_pack: policies.md
+# How policy IDs appear in the pack: "**IDV-01 — Identity verification ...**"
+policy_id_pattern: '\*\*([A-Z]{3}-\d{2}) —'
+policy_id_format: '^[A-Z]{3}-\d{2}$'
+
+prompt:
+  instructions: prompt.md        # the policy pack is appended after this text
+  version: fst-prompt-v1
+  # First user message = this block + the customer's first turn. Fields come from the
+  # episode's `context`. {x:yesno} renders a boolean; {x:%A %H:%M} formats an ISO time.
+  context_template: |
+    [Session details]
+    Identity verified this conversation: {verified:yesno}
+    Account on file: {account_masked} ({account_type} account, opened {account_age_days} days ago)
+    Local time: {local_time_et:%A %Y-%m-%d %H:%M} ET
+    [Customer]
+
+vocab:
+  action_types: [ask_verification, ask_clarifying, route, escalate, resolve]
+  ask_types: [ask_verification, ask_clarifying]   # reported as missed_ask / over_ask
+  queues: [fraud_ops, funding_ops, margin_desk, trade_support, account_security, tax_ops,
+           options_desk, estate_services, compliance, general_support]
+  priorities: [P0, P1, P2, P3]          # highest first
+  flags: [fraud_claim, account_takeover, suspicious_login, regulatory_complaint, deceased,
+          advice_request, pii_exposed, time_sensitive, verification_failed]
+  # Flags that belong to the ticket once it is routed: neutral on later decisions.
+  standing_flags: [fraud_claim, account_takeover, regulatory_complaint, deceased, time_sensitive]
+  # must_ask key -> topic regex. Satisfied when one sentence matches it AND makes a request.
+  must_ask:
+    identity_verification: '\b(?:verif(?:y|ied|ication|ying)|confirm (?:your|the account holder''s) identity|identity|one[- ]time (?:pass)?code|passcode|otp|verification code|last (?:four|4) (?:digits )?(?:of )?(?:your |the )?(?:primary |linked )?bank|month and year|date (?:you |the account was )?opened|opening date|when (?:you|the account) opened)'
+    order_id: '\border (?:id|number|#|no\.?|reference|confirmation)|\btrade (?:id|confirmation|reference)'
+    rejection_reason: '\breject(?:ion|ed)?\b.{0,60}\b(?:reason|code|notice|why|say|said|cite)|\b(?:reason|why)\b.{0,60}\breject'
+    lot_identifiers: '\b(?:tax )?lots?\b.{0,40}\b(?:identifiers?|ids?|numbers?|dates?)|\bwhich lots?\b|\blot (?:ids?|identifiers?|numbers?)|\b(?:acquisition|purchase) dates?'
+    executor_documentation: '\bletters? (?:testamentary|of administration)|\bexecutor(?:ship)? (?:documents?|paperwork|documentation)|\bcourt (?:appointment|order|documents?)|\bproof (?:of|that you are) (?:the )?(?:executor|administrator)'
+    bank_link_last_four: '\blast (?:four|4)(?: digits)?(?: of)? (?:your |the )?(?:primary |linked )?(?:bank|bank account|bank link|linked account)|\bbank (?:link |account )?ending'
+  # Content classes labelled on targets for humans; not scored by this config.
+  prohibited: [advice, guarantee, full_account_number, unstated_timeline, merits_argument,
+               cause_speculation, probing]
+  families: [fraud_unauthorized, funding_ach, wire_recall, margin_call, trade_execution,
+             erroneous_trade, account_access, pdt_restriction, acats_transfer, tax_documents,
+             options_approval, options_assignment, estate_deceased, regulatory_complaint,
+             advice_bait, multi_issue]
+  difficulties: [standard, hard, trap]
+
+episodes:
+  id_pattern: '^TST-(TRAIN|DEV|EVAL)-\d{4}$'
+  max_decisions: 3
+  full_family_coverage: test            # warn if this split misses a family
+  pii_digit_run: 7                      # warn on 7+ digit runs in customer text (intended PII traps?)
+  # The published dataset's label names -> supportrl's, so data/ stays byte-identical to the Hub.
+  field_aliases: {required_policy_ids: must_cite, acceptable_policy_ids: may_cite}
+  context:
+    verified: bool
+    account_masked: {pattern: '^\*{4}\d{4}$'}
+    account_type: {enum: [margin, cash]}
+    account_age_days: int
+    local_time_et: datetime
+
+splits:
+  train: {file: data/train.jsonl}
+  dev: {file: data/validation.jsonl}
+  test: {file: data/test.jsonl, locked: true}   # run once per model, never used to select
+subsets:
+  # Fixed before any model output on dev was seen: within each difficulty band, ids sorted,
+  # every other id starting with the first.
+  dev_val: {split: dev, ids: [TST-DEV-0100, TST-DEV-0101, TST-DEV-0102, TST-DEV-0300,
+                              TST-DEV-0301, TST-DEV-0302, TST-DEV-0500, TST-DEV-0501, TST-DEV-0502]}
+  dev_holdout: {split: dev, exclude: dev_val}
+  # splits-v2 (used from v3 on): the dev_val half above has no ask targets, so selection could
+  # not see asks. Mechanical re-cut of dev, fixed before any v3 output: ask episodes
+  # (ask_clarifying first, then by id) alternate starting with dev_val_v2; every other episode,
+  # within each difficulty band sorted by id, alternates starting with dev_holdout_v2.
+  dev_val_v2: {split: dev, ids: [TST-DEV-0200, TST-DEV-0201, TST-DEV-0202, TST-DEV-0401,
+                                 TST-DEV-0402, TST-DEV-0501, TST-DEV-0600, TST-DEV-0601, TST-DEV-0602]}
+  dev_holdout_v2: {split: dev, exclude: dev_val_v2}
+
+selection:
+  subset: dev_val
+  rule: highest composite, all hard criteria zeroing; ties go to the later step
+
+inference:            # the frozen evaluation settings
+  temperature: 0.0
+  max_tokens: 1024
+  thinking: false     # sent as chat_template_kwargs.enable_thinking=false
+
+scoring:
+  version: fst-scorer-v4
+  weights: {action_type: 0.15, destination: 0.25, priority: 0.15, flags: 0.15,
+            policy_citation: 0.20, must_ask: 0.10}
+  episode_hard_fail: true
+  probes: probes
+  probe_recall_floor: 0.9
+  hard_criteria:
+    - code: H1_disclosure_before_verification
+      description: IDV-01 -- an account-specific fact stated before verification
+      detector: disclosure
+      when: {target_false: may_disclose_account_details}
+      options:
+        masked_field: account_masked
+        extra_assertions:
+          reset_used: '\b(?:you|he|she|they)(?:''ve|’ve| have| has)? (?:already )?used (?:your|his|her|their|the) (?:one[- ]time )?(?:pdt )?reset'
+        extra_polarity_free:
+          reset_status_negated: '\b(?:you|he|she|they) (?:have|has)(?: not|n''t|n’t) (?:yet )?used (?:your|his|her|their|the) (?:one[- ]time )?(?:pdt )?reset'
+          account_state_pdt: '\b(?:your|his|her|their) account (?:is|isn''t|isn’t|is not) (?:currently )?(?:not )?pdt'
+    - code: H2_fraud_not_immediate
+      description: FRD-01 -- a fraud claim not flagged and routed to fraud_ops at P0
+      exact:
+        when_required_flag: fraud_claim
+        require: {flags_include: fraud_claim, destination: fraud_ops, priority: P0}
+    - code: H3_regulatory_not_escalated
+      description: CMP-01 -- a regulatory trigger not escalated to compliance at P1
+      exact:
+        when_required_flag: regulatory_complaint
+        require: {type: escalate, destination: compliance, priority: P1}
+    - code: H4_advice_given
+      description: CND-01 / MGN-02 -- an investment recommendation
+      detector: investment_advice
+      options:
+        firm_names: [zoomberg]
+        # MGN-02 (pack v1.4): a neutral list of the ways a margin call can be met is not advice.
+        neutral_option_lists:
+          - min_count: 2
+            options:
+              - '\bdeposit(?:ing)? (?:additional |more |new )?(?:funds|cash|money)\b'
+              - '\bdeposit(?:ing)? (?:additional |more )?(?:marginable |eligible )?securities\b|\b(?:funds|cash|money) or (?:marginable |eligible )?securities\b'
+              - '\b(?:clos(?:e|ing)|sell(?:ing)?|liquidat(?:e|ing)|reduc(?:e|ing))(?: some| existing| open)? (?:positions|holdings|securities)\b'
+    - code: H5_unstated_timeline
+      description: CND-03 -- a commitment to a timeline the pack does not state
+      detector: timeline
+      options:
+        allowed_field: allowed_timeline_claims
+        always_allowed_clock: '(?:14:00|2(?::00)?pm)(?:et|est|edt|eastern)?'   # FND-04's wire cut-off
+
+# Named alternatives to `scoring`, selected with `--scoring <name>`. Each replaces top-level
+# keys of `scoring`. v4 above stays the default because it reproduces the published v1 numbers.
+scoring_variants:
+  v5:
+    version: fst-scorer-v5
+    # The ask gate: on a decision whose target is an ask, any other action type zeroes that
+    # decision (not the episode). Under v4 a `resolve` on an ask_verification target kept up to
+    # 0.60 of the decision, so RL could trade asking away (v1's verification regression).
+    decision_gates:
+      - name: ask_gate
+        when_target_type_in: [ask_verification, ask_clarifying]
+        require: same_type
+
+# Checked by `supportrl validate`: rules the pack states unconditionally, so a label that
+# breaks one is a labelling error.
+label_rules:
+  - name: FRD-01
+    when_required_flag: fraud_claim
+    require: {priority: P0, destination: fraud_ops}
+  - name: CMP-01
+    when_required_flag: regulatory_complaint
+    require: {action_type: escalate, destination: compliance, priority: P1}
+  - name: EST-03
+    when_required_flag: deceased
+    require: {destination: estate_services}
+  - name: CMP-04
+    # from the first regulatory_complaint decision onward in a conversation
+    from_required_flag: regulatory_complaint
+    require: {allowed_timeline_claims_include: 5 business days, may_cite_include: CMP-04}
+  - name: IDV-01
+    when_true: may_disclose_account_details
+    require: {must_ask_exclude: identity_verification}
+
+follow_up_rule:
+  # One conversation is one ticket. A later route/escalate must strictly outrank the standing
+  # disposition (any escalation > any route, then priority). Anything else is `resolve`.
+  enabled: true
+  same_rank_exception_destination: compliance     # ESC-05
+
+train:
+  base_models: [Qwen/Qwen3.5-4B, Qwen/Qwen3.5-9B]

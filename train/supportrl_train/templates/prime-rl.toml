@@ -1,0 +1,56 @@
+# Hosted LoRA RL run for the `{project}` support-rl project, rendered by `supportrl train --backend prime`.
+# Launch: `prime train <this file>` after `prime env push` of the built environment.
+#
+# Data: the TRAIN split only ({n_train} episodes). `{selection_subset}` is monitored every
+# {interval} steps and an adapter is kept at each, so the predeclared selection rule can be
+# applied afterwards (`supportrl train --backend select`). The locked test split is not in
+# the pushed package at all.
+name = "{name}"
+model = "{model}"
+loss = "rl"
+
+max_steps = {max_steps}
+batch_size = {batch_size}              # rollouts per step
+rollouts_per_example = {rollouts}       # group size for group-relative advantages
+max_inflight_rollouts = {batch_size}
+
+# Set explicitly so the run record is exact rather than delegated to platform defaults.
+# LoRA rank is platform-fixed for hosted LoRA; read it back from the adapter_config.json.
+learning_rate = {lr}
+lora_alpha = {lora_alpha}
+
+[sampling]
+temperature = {temperature}             # exploration; evaluation stays at 0
+# Size from your baseline's completion tokens (summary.json -> completion_tokens.max).
+# A truncated turn fails the format gate and shows up in the truncated_turns metric.
+max_tokens = {max_tokens}
+enable_thinking = false
+
+[[env]]
+id = "{env_id}"
+# `repeats` independently shuffled passes over train: a hosted sampler that reads tasks in
+# order then neither runs out of tasks nor sees one family per batch.
+args = {{ split = "train", repeats = {repeats}, shuffle_seed = {shuffle_seed} }}
+
+[eval]
+interval = {interval}
+num_examples = -1
+rollouts_per_example = 1
+skip_first_step = false        # step-0 eval of the base model = in-run sanity check vs your baseline
+
+[eval.sampling]
+temperature = 0.0
+max_tokens = {max_tokens}
+enable_thinking = false        # check: the env metric thinking_turns must stay 0
+
+[[eval.env]]
+id = "{env_id}"
+args = {{ split = "{selection_subset}" }}
+
+[checkpoints]
+interval = {interval}
+keep_cloud = 3
+
+[adapters]
+interval = {interval}
+keep_last = -1

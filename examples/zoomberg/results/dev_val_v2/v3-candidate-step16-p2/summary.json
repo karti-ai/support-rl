@@ -1,0 +1,79 @@
+{
+  "all": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.675,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.675,
+    "composite_no_hard_gate": 0.675,
+    "episodes_hard_failed": 0,
+    "components": {
+      "action_type": 0.6153846153846154,
+      "destination": 0.5384615384615384,
+      "priority": 0.6923076923076923,
+      "flags": 0.7692307692307693,
+      "policy_citation": 0.7692307692307693,
+      "must_ask": 0.6923076923076923
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 0
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.07692307692307693,
+    "under_escalation_rate": 0.07692307692307693,
+    "under_route_rate": 0.15384615384615385,
+    "missed_ask_rate": 0.15384615384615385,
+    "over_ask_rate": 0.0,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "0/1",
+      "escalate": "1/2",
+      "resolve": "5/5",
+      "route": "2/4"
+    },
+    "action_confusion": {
+      "resolve->resolve": 5,
+      "escalate->route": 1,
+      "route->resolve": 2,
+      "route->route": 2,
+      "ask_verification->resolve": 1,
+      "escalate->escalate": 1,
+      "ask_clarifying->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 86,
+      "p95": 122.0,
+      "max": 125
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 1.0,
+      "estate_deceased": 0.9,
+      "funding_ach": 0.75,
+      "options_assignment": 0.25,
+      "pdt_restriction": 1.0,
+      "tax_documents": 0.45,
+      "trade_execution": 0.275,
+      "wire_recall": 0.725
+    },
+    "by_difficulty": {
+      "hard": 0.7833,
+      "standard": 0.8167,
+      "trap": 0.425
+    }
+  }
+}

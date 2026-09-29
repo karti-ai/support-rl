@@ -1,0 +1,39 @@
+# Exports for the demo site. Paths are relative to this file.
+# To add a model: run `supportrl eval ... --split test --allow-locked` once for the new adapter,
+# commit its run dir under examples/zoomberg/results/test/, and add one entry per export below.
+exports:
+  - project: ../examples/zoomberg
+    split: test
+    out: out/zoomberg-test.json
+    advisory: [H1_disclosure_before_verification, H4_advice_given]   # recall < 0.9 on holdout probes
+    runs:
+      - key: base-4b
+        label: Qwen3.5-4B (base)
+        description: untrained reference, thinking off
+        path: ../examples/zoomberg/results/test/qwen3.5-4b-base
+      - key: base-9b
+        label: Qwen3.5-9B (base)
+        description: the base model v1 was trained from, thinking off
+        path: ../examples/zoomberg/results/test/qwen3.5-9b-base
+      - key: v1
+        label: Karti-Small-Support-9B v1
+        description: LoRA RL on the train split, 14 steps, selected on dev_val
+        path: ../examples/zoomberg/results/test/support-9b-v1
+      - key: v2
+        label: Karti-Small-Support-9B v2 (not released)
+        description: negative result -- recovered verification asks (5/7) but lost routing; failed its predeclared ship rule
+        path: ../examples/zoomberg/results/test/support-9b-v2
+      - key: v3
+        label: Karti-Small-Support-9B v3 (not released)
+        description: v1 continued under the ask-gated reward; flat vs v1, asks still 2/7; failed its predeclared ship rule
+        path: ../examples/zoomberg/results/test/support-9b-v3
+  - project: ../examples/zoomberg
+    split: dev
+    out: out/zoomberg-dev.json
+    advisory: [H1_disclosure_before_verification, H4_advice_given]
+    runs:
+      - {key: base-4b, label: Qwen3.5-4B (base), path: ../examples/zoomberg/results/dev/qwen3.5-4b-base}
+      - {key: base-9b, label: Qwen3.5-9B (base), path: ../examples/zoomberg/results/dev/qwen3.5-9b-base}
+      - {key: v1, label: Karti-Small-Support-9B v1, path: ../examples/zoomberg/results/dev/support-9b-v1}
+      - {key: v2, label: Karti-Small-Support-9B v2 (not released), path: ../examples/zoomberg/results/dev/support-9b-v2}
+      - {key: v3, label: Karti-Small-Support-9B v3 (not released), path: ../examples/zoomberg/results/dev/support-9b-v3}

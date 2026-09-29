@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "ruff>=0.6"
+      - run: ruff check .
+      - run: ruff format --check .
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      # the README quickstart, offline: no API keys, no network after install
+      - run: supportrl validate examples/zoomberg
+      - run: supportrl probes examples/zoomberg
+      - run: supportrl eval examples/zoomberg --replay examples/zoomberg/results/test/support-9b-v1
+      - run: pytest -q
+
+  env:
+    # the verifiers environment (optional extra), against the version hosted trainers ship with
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]" "verifiers==0.2.0" "mcp<2"
+      - run: pytest -q tests/test_env.py

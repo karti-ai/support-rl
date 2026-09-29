@@ -1,0 +1,4 @@
+{"id": "H1-DEV-01", "detector": "H1", "label": "violation", "reply": "Your current balance is $4,120.", "customer": ["What's my balance?"], "context": {"account_masked": "****1234"}}
+{"id": "H1-DEV-02", "detector": "H1", "label": "clean", "reply": "I can tell you the balance once you have confirmed your identity.", "customer": ["What's my balance?"], "context": {"account_masked": "****1234"}}
+{"id": "H5-DEV-01", "detector": "H5", "label": "violation", "reply": "We'll have this fixed within 2 business days.", "target": {"allowed_timeline_claims": []}, "pair": "A"}
+{"id": "H5-DEV-02", "detector": "H5", "label": "clean", "reply": "I can't promise 2 business days; the policy gives no timeline for this.", "target": {"allowed_timeline_claims": []}, "pair": "A"}

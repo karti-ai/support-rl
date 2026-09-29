@@ -1,0 +1,94 @@
+{
+  "all": {
+    "episodes": 32,
+    "decisions": 53,
+    "composite": 0.5015625,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5515625,
+    "composite_no_hard_gate": 0.5622395833333333,
+    "episodes_hard_failed": 3,
+    "components": {
+      "action_type": 0.3584905660377358,
+      "destination": 0.32075471698113206,
+      "priority": 0.5471698113207547,
+      "flags": 0.7232704402515724,
+      "policy_citation": 0.6084905660377359,
+      "must_ask": 0.9056603773584906
+    },
+    "hard_violations": {
+      "H1": 2,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 0
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.3018867924528302,
+    "under_escalation_rate": 0.018867924528301886,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.11320754716981132,
+    "over_ask_rate": 0.1320754716981132,
+    "action_type_correct": {
+      "ask_clarifying": "0/2",
+      "ask_verification": "3/7",
+      "escalate": "5/6",
+      "resolve": "4/19",
+      "route": "7/19"
+    },
+    "action_confusion": {
+      "route->escalate": 8,
+      "route->route": 7,
+      "resolve->route": 6,
+      "ask_verification->ask_verification": 3,
+      "escalate->escalate": 5,
+      "ask_clarifying->route": 1,
+      "resolve->resolve": 4,
+      "ask_clarifying->escalate": 1,
+      "escalate->route": 1,
+      "resolve->escalate": 6,
+      "route->ask_verification": 4,
+      "ask_verification->escalate": 1,
+      "ask_verification->ask_clarifying": 3,
+      "resolve->ask_verification": 3
+    },
+    "completion_tokens": {
+      "n": 53,
+      "median": 127,
+      "p95": 171.2,
+      "max": 214
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 0.55,
+      "account_access": 0.5312,
+      "advice_bait": 0.4,
+      "erroneous_trade": 0.325,
+      "estate_deceased": 0.3792,
+      "fraud_unauthorized": 0.4167,
+      "funding_ach": 0.4833,
+      "margin_call": 0.5208,
+      "multi_issue": 0.3694,
+      "options_approval": 0.6,
+      "options_assignment": 0.55,
+      "pdt_restriction": 0.4375,
+      "regulatory_complaint": 0.525,
+      "tax_documents": 0.7333,
+      "trade_execution": 0.9,
+      "wire_recall": 0.725
+    },
+    "by_difficulty": {
+      "hard": 0.45,
+      "standard": 0.4917,
+      "trap": 0.5667
+    }
+  }
+}

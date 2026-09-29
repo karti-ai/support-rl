@@ -1,0 +1,28 @@
+{
+  "project": "zoomberg",
+  "split": "dev_val_v2",
+  "scorer": "supportrl-scorer-1",
+  "scoring_config": "fst-scorer-v4",
+  "prompt_version": "fst-prompt-v1",
+  "sha256": {
+    "config": "7bbd7a6b5aa5a5b697fc065c69f90b1a8772428bafbd6385a864b9f399240e00",
+    "policy_pack": "081b01aeed3916e19a41f584c1b17cd5736cb13c3a7c17496bffed69c9d3d7e4",
+    "system_prompt": "9e16d510cc0d741b148d50471ec20379707b5b64761b3a7f50bf859ee5b85331",
+    "split:train": "1529bfb2400a6a465b356aae654fb553bcf068d8737a75fb1595956ce2972a9c",
+    "split:dev": "0cd4cd1cf22771b32915c9425c5a19a7483eb7cac439184a90c52e05b1ef8efc",
+    "split:test": "e781fd55b09d07d3f181ad6e8588de3a7df3bb0050969bc198962ff144e217f4"
+  },
+  "model": "v3 candidate, step 16, pass 3",
+  "endpoint": "Prime Inference (hosted, OpenAI-compatible)",
+  "sampling": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "max_tokens": 1024,
+    "temperature": 0.0
+  },
+  "rollouts_per_episode": 1,
+  "generated": "2026-09-29",
+  "runner": "verifiers 0.2.0 vf-eval, converted to supportrl outputs (responses and token usage only)",
+  "note": "v3 continued from v1 (step-14 checkpoint) for 14 steps at lr 5e-5 under scoring v5, on the same 71-episode train data as v2 (15 episodes not in the vendored dataset revision). Selected on dev_val_v2 with 3 T=0 passes per candidate and an ask guard; every candidate failed the guard, so the best mean composite (step 24) was run on test once. Not released."
+}

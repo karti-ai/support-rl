@@ -1,0 +1,80 @@
+{
+  "all": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.6055555555555556,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.6055555555555556,
+    "composite_no_hard_gate": 0.6888888888888889,
+    "episodes_hard_failed": 1,
+    "components": {
+      "action_type": 0.6153846153846154,
+      "destination": 0.5384615384615384,
+      "priority": 0.6153846153846154,
+      "flags": 0.6923076923076923,
+      "policy_citation": 0.7692307692307693,
+      "must_ask": 0.6923076923076923
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.15384615384615385,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.07692307692307693,
+    "missed_ask_rate": 0.15384615384615385,
+    "over_ask_rate": 0.0,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "0/1",
+      "escalate": "2/2",
+      "resolve": "3/5",
+      "route": "3/4"
+    },
+    "action_confusion": {
+      "resolve->resolve": 3,
+      "escalate->escalate": 2,
+      "resolve->escalate": 1,
+      "route->route": 3,
+      "resolve->route": 1,
+      "ask_verification->resolve": 1,
+      "ask_clarifying->escalate": 1,
+      "route->resolve": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 87,
+      "p95": 157.8,
+      "max": 159
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 1.0,
+      "estate_deceased": 0.55,
+      "funding_ach": 0.0,
+      "options_assignment": 0.25,
+      "pdt_restriction": 1.0,
+      "tax_documents": 1.0,
+      "trade_execution": 0.275,
+      "wire_recall": 0.6875
+    },
+    "by_difficulty": {
+      "hard": 0.6417,
+      "standard": 1.0,
+      "trap": 0.175
+    }
+  }
+}

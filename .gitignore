@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+# your own runs (the Zoomberg example's frozen runs live in examples/zoomberg/results/)
+runs/

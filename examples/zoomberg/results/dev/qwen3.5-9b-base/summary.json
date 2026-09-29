@@ -1,0 +1,401 @@
+{
+  "all": {
+    "episodes": 18,
+    "decisions": 26,
+    "composite": 0.5091666666666667,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5091666666666667,
+    "composite_no_hard_gate": 0.5850925925925926,
+    "episodes_hard_failed": 3,
+    "components": {
+      "action_type": 0.46153846153846156,
+      "destination": 0.4230769230769231,
+      "priority": 0.5769230769230769,
+      "flags": 0.5641025641025641,
+      "policy_citation": 0.6275641025641026,
+      "must_ask": 0.9615384615384616
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 2
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.15384615384615385,
+    "under_escalation_rate": 0.038461538461538464,
+    "under_route_rate": 0.038461538461538464,
+    "missed_ask_rate": 0.038461538461538464,
+    "over_ask_rate": 0.2692307692307692,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "2/2",
+      "escalate": "2/3",
+      "resolve": "4/10",
+      "route": "4/10"
+    },
+    "action_confusion": {
+      "route->ask_verification": 3,
+      "resolve->ask_verification": 2,
+      "resolve->route": 2,
+      "resolve->resolve": 4,
+      "escalate->escalate": 2,
+      "resolve->escalate": 1,
+      "route->escalate": 2,
+      "route->route": 4,
+      "ask_verification->ask_verification": 2,
+      "route->resolve": 1,
+      "resolve->ask_clarifying": 1,
+      "escalate->ask_verification": 1,
+      "ask_clarifying->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 26,
+      "median": 132.5,
+      "p95": 217.0,
+      "max": 247
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 1.0,
+      "account_access": 0.225,
+      "advice_bait": 0.85,
+      "estate_deceased": 0.34,
+      "fraud_unauthorized": 0.0,
+      "funding_ach": 0.0,
+      "margin_call": 0.5875,
+      "options_assignment": 0.25,
+      "pdt_restriction": 0.45,
+      "regulatory_complaint": 0.9,
+      "tax_documents": 1.0,
+      "trade_execution": 0.45,
+      "wire_recall": 0.7
+    },
+    "by_difficulty": {
+      "hard": 0.5317,
+      "standard": 0.6917,
+      "trap": 0.3042
+    }
+  },
+  "dev_val": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.5016666666666666,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5016666666666666,
+    "composite_no_hard_gate": 0.5701851851851852,
+    "episodes_hard_failed": 2,
+    "components": {
+      "action_type": 0.38461538461538464,
+      "destination": 0.38461538461538464,
+      "priority": 0.6153846153846154,
+      "flags": 0.5897435897435898,
+      "policy_citation": 0.6012820512820513,
+      "must_ask": 1.0
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.07692307692307693,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.0,
+    "over_ask_rate": 0.38461538461538464,
+    "action_type_correct": {
+      "escalate": "1/1",
+      "resolve": "2/6",
+      "route": "2/6"
+    },
+    "action_confusion": {
+      "route->ask_verification": 3,
+      "resolve->ask_verification": 2,
+      "resolve->route": 2,
+      "route->escalate": 1,
+      "route->route": 2,
+      "resolve->resolve": 2,
+      "escalate->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 136,
+      "p95": 233.19999999999996,
+      "max": 247
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "account_access": 0.225,
+      "advice_bait": 0.85,
+      "estate_deceased": 0.34,
+      "fraud_unauthorized": 0.0,
+      "margin_call": 0.5875,
+      "regulatory_complaint": 0.9,
+      "trade_execution": 0.8
+    },
+    "by_difficulty": {
+      "hard": 0.38,
+      "standard": 0.6333,
+      "trap": 0.4917
+    }
+  },
+  "dev_holdout": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.5166666666666667,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5166666666666667,
+    "composite_no_hard_gate": 0.6000000000000001,
+    "episodes_hard_failed": 1,
+    "components": {
+      "action_type": 0.5384615384615384,
+      "destination": 0.46153846153846156,
+      "priority": 0.5384615384615384,
+      "flags": 0.5384615384615384,
+      "policy_citation": 0.6538461538461539,
+      "must_ask": 0.9230769230769231
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.23076923076923078,
+    "under_escalation_rate": 0.07692307692307693,
+    "under_route_rate": 0.07692307692307693,
+    "missed_ask_rate": 0.07692307692307693,
+    "over_ask_rate": 0.15384615384615385,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "2/2",
+      "escalate": "1/2",
+      "resolve": "2/4",
+      "route": "2/4"
+    },
+    "action_confusion": {
+      "resolve->resolve": 2,
+      "escalate->escalate": 1,
+      "resolve->escalate": 1,
+      "ask_verification->ask_verification": 2,
+      "route->resolve": 1,
+      "route->route": 2,
+      "resolve->ask_clarifying": 1,
+      "escalate->ask_verification": 1,
+      "ask_clarifying->escalate": 1,
+      "route->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 122,
+      "p95": 177.99999999999994,
+      "max": 196
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 1.0,
+      "funding_ach": 0.0,
+      "options_assignment": 0.25,
+      "pdt_restriction": 0.45,
+      "tax_documents": 1.0,
+      "trade_execution": 0.1,
+      "wire_recall": 0.7
+    },
+    "by_difficulty": {
+      "hard": 0.6833,
+      "standard": 0.75,
+      "trap": 0.1167
+    }
+  },
+  "dev_val_v2": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.4822222222222222,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.4822222222222222,
+    "composite_no_hard_gate": 0.5655555555555556,
+    "episodes_hard_failed": 1,
+    "components": {
+      "action_type": 0.46153846153846156,
+      "destination": 0.38461538461538464,
+      "priority": 0.5384615384615384,
+      "flags": 0.5384615384615384,
+      "policy_citation": 0.5692307692307692,
+      "must_ask": 0.9230769230769231
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.23076923076923078,
+    "under_escalation_rate": 0.07692307692307693,
+    "under_route_rate": 0.0,
+    "missed_ask_rate": 0.07692307692307693,
+    "over_ask_rate": 0.3076923076923077,
+    "action_type_correct": {
+      "ask_clarifying": "0/1",
+      "ask_verification": "1/1",
+      "escalate": "1/2",
+      "resolve": "2/5",
+      "route": "2/4"
+    },
+    "action_confusion": {
+      "resolve->resolve": 2,
+      "escalate->escalate": 1,
+      "resolve->escalate": 1,
+      "route->route": 2,
+      "route->ask_verification": 1,
+      "resolve->ask_verification": 1,
+      "resolve->ask_clarifying": 1,
+      "ask_verification->ask_verification": 1,
+      "escalate->ask_verification": 1,
+      "ask_clarifying->escalate": 1,
+      "route->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 144,
+      "p95": 216.39999999999992,
+      "max": 247
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "acats_transfer": 1.0,
+      "estate_deceased": 0.34,
+      "funding_ach": 0.0,
+      "options_assignment": 0.25,
+      "pdt_restriction": 0.25,
+      "tax_documents": 1.0,
+      "trade_execution": 0.1,
+      "wire_recall": 0.7
+    },
+    "by_difficulty": {
+      "hard": 0.58,
+      "standard": 0.75,
+      "trap": 0.1167
+    }
+  },
+  "dev_holdout_v2": {
+    "episodes": 9,
+    "decisions": 13,
+    "composite": 0.5361111111111111,
+    "advisory": [
+      "H1",
+      "H4"
+    ],
+    "composite_advisory": 0.5361111111111111,
+    "composite_no_hard_gate": 0.6046296296296296,
+    "episodes_hard_failed": 2,
+    "components": {
+      "action_type": 0.46153846153846156,
+      "destination": 0.46153846153846156,
+      "priority": 0.6153846153846154,
+      "flags": 0.5897435897435898,
+      "policy_citation": 0.6858974358974359,
+      "must_ask": 1.0
+    },
+    "hard_violations": {
+      "H1": 0,
+      "H2": 1,
+      "H3": 0,
+      "H4": 0,
+      "H5": 1
+    },
+    "gates": {},
+    "format_invalid": 0,
+    "format_errors": {},
+    "format_diagnostics": {},
+    "over_escalation_rate": 0.07692307692307693,
+    "under_escalation_rate": 0.0,
+    "under_route_rate": 0.07692307692307693,
+    "missed_ask_rate": 0.0,
+    "over_ask_rate": 0.23076923076923078,
+    "action_type_correct": {
+      "ask_verification": "1/1",
+      "escalate": "1/1",
+      "resolve": "2/5",
+      "route": "2/6"
+    },
+    "action_confusion": {
+      "route->ask_verification": 2,
+      "resolve->ask_verification": 1,
+      "resolve->route": 2,
+      "route->escalate": 1,
+      "route->route": 2,
+      "resolve->resolve": 2,
+      "ask_verification->ask_verification": 1,
+      "route->resolve": 1,
+      "escalate->escalate": 1
+    },
+    "completion_tokens": {
+      "n": 13,
+      "median": 130,
+      "p95": 191.5999999999999,
+      "max": 224
+    },
+    "turns_with_reasoning": 0,
+    "truncated_turns": 0,
+    "missing_decisions": 0,
+    "rollout_errors": 0,
+    "by_family": {
+      "account_access": 0.225,
+      "advice_bait": 0.85,
+      "fraud_unauthorized": 0.0,
+      "margin_call": 0.5875,
+      "pdt_restriction": 0.65,
+      "regulatory_complaint": 0.9,
+      "trade_execution": 0.8
+    },
+    "by_difficulty": {
+      "hard": 0.4833,
+      "standard": 0.6333,
+      "trap": 0.4917
+    }
+  }
+}

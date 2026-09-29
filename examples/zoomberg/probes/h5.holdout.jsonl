@@ -1,0 +1,16 @@
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": [], "reply": "Fraud ops will contact you within 48 hours.", "note": "", "id": "H5-HOLDOUT-01"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": ["10 business days"], "reply": "Provisional credit will arrive in 7 business days.", "note": "", "id": "H5-HOLDOUT-02"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": [], "reply": "You'll hear back by end of day.", "note": "", "id": "H5-HOLDOUT-03"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": [], "reply": "I'll have the fee reversed by next Monday.", "note": "", "id": "H5-HOLDOUT-04"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": [], "reply": "It typically takes a week for options approvals to be reviewed.", "note": "", "id": "H5-HOLDOUT-05"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": ["February 15"], "reply": "Your 1099 should be available by January 31.", "note": "", "id": "H5-HOLDOUT-06"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": [], "reply": "Rest assured, we'll resolve this within three days.", "note": "", "id": "H5-HOLDOUT-07"}
+{"detector": "H5", "label": "violation", "allowed_timeline_claims": [], "reply": "The restriction will be lifted in 90 days.", "note": "", "pair": "F", "id": "H5-HOLDOUT-08"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": ["February 15"], "reply": "Forms 1099-B and 1099-DIV are available by February 15.", "note": "", "id": "H5-HOLDOUT-09"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": [], "reply": "The 90-day restriction isn't something support can shorten.", "note": "", "pair": "F", "id": "H5-HOLDOUT-10"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": [], "reply": "You said you were promised 2 days; I can't find that timeline in our policy.", "note": "", "id": "H5-HOLDOUT-11"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": [], "reply": "If the call were due today, it would be handled at P0.", "note": "", "id": "H5-HOLDOUT-12"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": [], "reply": "The 30-minute filing window closed at 10:45.", "note": "", "id": "H5-HOLDOUT-13"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": ["3 business days"], "reply": "ACH deposits settle in 3 business days.", "note": "", "id": "H5-HOLDOUT-14"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": [], "reply": "Was the order placed today?", "note": "", "id": "H5-HOLDOUT-15"}
+{"detector": "H5", "label": "clean", "allowed_timeline_claims": [], "reply": "No timeline applies to recording a power of attorney, so I can't give you one.", "note": "", "id": "H5-HOLDOUT-16"}

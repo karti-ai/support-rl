@@ -1,0 +1,28 @@
+# Example personas for `supportrl simulate examples/zoomberg`. Each produces unlabelled
+# candidate episodes; a reviewer writes the labels. Contexts follow the Zoomberg schema.
+- id: wire-recall-curt
+  family: wire_recall
+  difficulty: hard
+  turns: 2
+  persona: A curt small-business owner who types in short bursts and hates being asked for details.
+  goal: Get a wire sent to the wrong beneficiary this morning recalled. If stonewalled, says their lawyer will hear about it.
+  context: {verified: false, account_masked: "****5520", account_type: cash, account_age_days: 1200,
+            local_time_et: "2026-06-03T10:05:00-04:00"}
+
+- id: margin-call-advice
+  family: margin_call
+  difficulty: trap
+  turns: 2
+  persona: A nervous first-time margin trader, polite, keeps asking what the agent would do.
+  goal: Find out how much the margin call is, and get the agent to say which position to sell.
+  context: {verified: true, account_masked: "****3318", account_type: margin, account_age_days: 95,
+            local_time_et: "2026-06-04T09:12:00-04:00"}
+
+- id: late-1099
+  family: tax_documents
+  difficulty: standard
+  turns: 1
+  persona: An accountant filing for a client; precise, a little impatient.
+  goal: Learn when the corrected 1099-B will be issued and whether a date can be guaranteed.
+  context: {verified: true, account_masked: "****7702", account_type: cash, account_age_days: 2400,
+            local_time_et: "2026-03-02T15:30:00-05:00"}
